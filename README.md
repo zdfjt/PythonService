@@ -1,2 +1,8 @@
-# PythonService
-RunPythonScripts
+把去年写的撸空投的工具重新整理了一下发布在cloudfaire上
+https://megatrontool.pages.dev/
+网页端是全静态页面支持常规的Web3 EVM系列的交
+一些复杂的操作需要本地脚本完成  由网页端发送到本地运行的PythonService执行
+PythonService建议运行在内网环境中  
+网页端发送到PythonService的数据上不加密的 请明确使用风险
+
+本项目主要为了记录一些常规的交互脚本 方便自己批量化
