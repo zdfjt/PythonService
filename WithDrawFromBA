@@ -1,0 +1,14 @@
+def main():
+    print('main')
+    logMsg(rpc)
+    logMsg(key)
+    api_key = ' '
+    api_secret_key = ''
+    w3 = Web3(Web3.HTTPProvider(rpc))
+    acc = w3.eth.account.from_key(key)
+    logMsg(acc.address)
+    cex = Spot(api_key, api_secret_key)
+    sendamount =  round(random.uniform(0.02,0.04),3  )
+    withdrawalinfo = cex.withdraw(coin="BNB",amount = sendamount,address =  acc.address,network= "BNB")
+    logMsg(withdrawalinfo)
+trxStatus,trxHash  =  main()
