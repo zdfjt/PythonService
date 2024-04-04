@@ -1,0 +1,22 @@
+def main():
+    print('main')
+    logMsg(rpc)
+    logMsg(key)
+    api_key = ''
+    api_secret_key = ''
+    passphrase = ''
+    w3 = Web3(Web3.HTTPProvider(rpc))
+    acc = w3.eth.account.from_key(key)
+    logMsg(acc.address)
+    cex = Funding.FundingAPI(api_key, api_secret_key, passphrase, use_server_time=False, flag='0')
+    print(cex.get_balances("USDT"))
+    withdrawalFee = get_okex_withdraw_fee(cex,"USDT","USDT-Polygon")
+    logMsg(f'USDT-Polygon fee:{withdrawalFee}')
+    withdrawalinfo = cex.withdrawal(ccy="USDT",amt = '10.0',dest = '4',toAddr=acc.address,fee=withdrawalFee,chain = "USDT-Polygon")
+    logMsg(withdrawalinfo)
+    if  withdrawalinfo['code']==0:
+        return  True,'提币成功请等待到账'
+    else:
+        return False, withdrawalinfo['msg']
+
+trxStatus,trxHash  =  main()
